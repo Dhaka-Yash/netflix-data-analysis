@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+
+
+np.random.seed(42)
+
+
+rows = 300
+
+
+data = {
+"Title": [f"Title_{i}" for i in range(rows)],
+"Type": np.random.choice(["Movie", "TV Show"], rows),
+"Genre": np.random.choice([
+"Drama", "Comedy", "Action", "Romance", "Horror", "Sci-Fi"
+], rows),
+"Release_Year": np.random.randint(2000, 2024, rows),
+"Rating": np.random.choice(["G", "PG", "PG-13", "R", "TV-MA"], rows),
+"Duration": np.random.randint(60, 180, rows),
+"Country": np.random.choice([
+"United States", "India", "UK", "Canada", "Japan"
+], rows)
+}
+
+
+df = pd.DataFrame(data)
+df.to_csv("netflix_data.csv", index=False)
+print("netflix_data.csv created")
